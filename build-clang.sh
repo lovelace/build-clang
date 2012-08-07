@@ -1,4 +1,6 @@
 #!/bin/bash -ex
+# Build and install clang.
+. config.sh
 
 # Build LLVM and Clang.
 cd $SRC

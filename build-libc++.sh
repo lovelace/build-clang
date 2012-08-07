@@ -1,5 +1,5 @@
 #!/bin/bash -ex
-# Download, build and install libc++.
+# Build and install libc++.
 . config.sh
 
 # Setup to build with Clang

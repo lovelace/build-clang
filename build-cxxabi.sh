@@ -1,5 +1,5 @@
 #!/bin/bash -ex
-# Download, build and install libcxxabi (with clang).
+# Build and install libcxxabi (with clang).
 . config.sh
 
 # Source checkout location
