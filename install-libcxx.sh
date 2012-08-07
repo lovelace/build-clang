@@ -1,22 +1,12 @@
 #!/bin/bash -ex
 # Download, build and install libc++.
-
-# Installation root
-PREFIX=/opt/clang
-LLVM_PREFIX=/opt/clang
-
-# Source checkout location
-SRC=/tmp/src
+. config.sh
 
 # Setup to build with Clang
 CC=$PREFIX/bin/clang
 CXX=$PREFIX/bin/clang++
 export CC CXX
 
-# Checkout the source code.
-mkdir -p $SRC
-cd $SRC
-svn checkout http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
 LIBCXX_SRC=$SRC/libcxx
 
 # Old method of building.
@@ -26,6 +16,7 @@ LIBCXX_SRC=$SRC/libcxx
 
 
 # Build out of source.
+cd $SRC
 rm -rf build-libcxx
 mkdir -p build-libcxx
 cd build-libcxx
@@ -35,7 +26,7 @@ CXXFLAGS="$CXXDEFINES -I$PREFIX/include -march=native -mtune=native"
 LINKOPTS="-L$PREFIX/lib -lc++abi -Wl,-z,origin -Wl,--no-undefined"
 export CXXDEFINES CXXFLAGS LINKOPTS
 
-( cmake -DLIT_EXECUTABLE=$LLVM_PREFIX/utils/lit/lit.py	\
+( cmake -DLIT_EXECUTABLE=$PREFIX/utils/lit/lit.py	\
         -DCMAKE_INSTALL_PREFIX=$PREFIX			\
         -DCMAKE_BUILD_TYPE=RelWithDebInfo		\
         -DCMAKE_SHARED_LINKER_FLAGS="$LINKOPTS"		\

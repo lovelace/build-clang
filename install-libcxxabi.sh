@@ -1,11 +1,8 @@
 #!/bin/bash -ex
 # Download, build and install libcxxabi (with clang).
-
-# Installation root
-PREFIX=/opt/clang
+. config.sh
 
 # Source checkout location
-SRC=/tmp/src
 LIBCXXABI_SRC=$SRC/libcxxabi
 LIBCXX_SRC=$SRC/libcxx
 
@@ -15,10 +12,7 @@ CXX=$PREFIX/bin/clang++
 export CC CXX
 
 # Checkout the source code.
-mkdir -p $SRC
-cd $SRC 
-svn co http://llvm.org/svn/llvm-project/libcxxabi/trunk libcxxabi
-cd libcxxabi
+cd $SRC/libcxxabi
 
 CXXDEFINES="-D_XOPEN_SOURCE=700 -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS"
 CXXINCLUDES="-I $LIBCXXABI_SRC/include -I $LIBCXX_SRC/include"

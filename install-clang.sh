@@ -1,33 +1,7 @@
 #!/bin/bash -ex
 
-# Installation root
-PREFIX=/opt/clang
-
-# Source checkout location
-SRC=/tmp/src
-
-mkdir -p $SRC
-cd $SRC 
-
-# Checkout LLVM.
-# Change directory to where you want the llvm directory placed.
-svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm
-
-# Checkout Clang.
-cd llvm/tools
-svn co http://llvm.org/svn/llvm-project/cfe/trunk clang
-cd ../.. # (back to where you started)
-
-# Checkout Compiler-RT.
-cd llvm/projects
-svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt
-cd ../.. # (back to where you started)
-
-# Checkout LLDB
-## FIXME: TODO
-
-
 # Build LLVM and Clang.
+cd $SRC
 mkdir -p build-clang # (for building without polluting the source dir)
 cd build-clang
 ../llvm/configure  --enable-optimized --enable-targets=host-only --prefix=$PREFIX
@@ -46,7 +20,7 @@ sudo make install
 
 
 #-------------------------------------------------------------------------------
-# Notes from acmorrow
+# Notes from acmorrow for cmake build
 # 
 # #!/bin/bash
 # ( cmake -DCMAKE_BUILD_TYPE=Release
