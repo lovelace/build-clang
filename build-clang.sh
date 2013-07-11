@@ -6,7 +6,9 @@
 cd $SRC
 mkdir -p build-clang # (for building without polluting the source dir)
 cd build-clang
-../llvm/configure  --enable-optimized --enable-targets=host-only --prefix=$PREFIX
+# Force use of gcc for building clang in case a different version of
+# clang is already installed and not working correctly (i.e. on Ubuntu 12.04).
+CC=gcc CXX=g++ ../llvm/configure  --enable-optimized --enable-targets=host-only --prefix=$PREFIX
 make
 
 sudo make install

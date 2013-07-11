@@ -8,15 +8,15 @@ cd $SRC
 
 # Checkout LLVM.
 # Change directory to where you want the llvm directory placed.
-svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm
+svn co $LLVM_SVN llvm
 
 # Checkout Clang.
 cd $SRC/llvm/tools
-svn co http://llvm.org/svn/llvm-project/cfe/trunk clang
+svn co $CLANG_SVN clang
 
 # Checkout Compiler-RT.
 cd $SRC/llvm/projects
-svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt
+svn co $CRT_SVN compiler-rt
 
 # Checkout LLDB
 ## FIXME: TODO
@@ -24,9 +24,9 @@ svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt
 
 # Checkout libc++
 cd $SRC
-svn checkout http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
+svn checkout $LIBCXX_SVN libcxx
 
 
 # Checkout libcxxabi
 cd $SRC
-svn co http://llvm.org/svn/llvm-project/libcxxabi/trunk libcxxabi
+svn co $LIBCXXABI_SVN libcxxabi
