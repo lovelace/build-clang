@@ -10,7 +10,7 @@ SRC=/tmp/src
 # What version to check out (if you prefer not to follow trunk)
 #VERSION=trunk
 #ABI_VERSION=trunk
-VERSION=branches/release_33
+VERSION=tags/RELEASE_33/final
 ABI_VERSION=branches/release_32
 
 # Subversion location of LLVM
